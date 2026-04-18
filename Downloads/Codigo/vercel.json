@@ -1,6 +1,7 @@
 {
   "buildCommand": "echo 'build complete'",
   "outputDirectory": ".",
+  "public": "Downloads",
   "routes": [
     {
       "src": "/(.*)",
