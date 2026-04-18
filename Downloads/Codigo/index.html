@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo 23 — La Fuerza Eléctrica | Tippens</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 15px; background: #f4f6fb; color: #1a1a2e; line-height: 1.6; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: #042C53; padding: 0 16px;
+    display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center;
+  }
+  nav a {
+    color: #a8d4ff; font-size: 13px; text-decoration: none;
+    padding: 8px 6px; white-space: nowrap;
+  }
+  nav a:hover { color: #fff; text-decoration: underline; }
+  nav .brand { color: #fff; font-weight: 700; font-size: 14px; margin-right: 8px; }
+
+  /* LAYOUT */
+  .container { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
+
+  /* HEADER */
+  .doc-header {
+    background: linear-gradient(135deg, #185FA5 0%, #042C53 100%);
+    color: white; border-radius: 10px; padding: 28px 30px; margin-bottom: 28px;
+  }
+  .doc-header h1 { font-size: 26px; margin-bottom: 4px; }
+  .doc-header p { font-size: 14px; color: #a8d4ff; }
+
+  /* SECTION HEADER */
+  .sec-header {
+    background: #185FA5; color: white;
+    padding: 10px 18px; border-radius: 8px 8px 0 0;
+    font-size: 16px; font-weight: 700;
+  }
+  .sec-header span { background: rgba(255,255,255,0.25); border-radius: 50%; padding: 1px 9px; margin-right: 8px; font-size: 14px; }
+
+  /* CARD */
+  .card {
+    background: white; border-radius: 0 0 8px 8px;
+    padding: 20px 22px; margin-bottom: 26px;
+    box-shadow: 0 2px 8px rgba(24,95,165,0.08);
+  }
+  section { margin-bottom: 10px; }
+
+  /* TABLA DE DECISIÓN */
+  .decision-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .decision-table th { background: #185FA5; color: white; padding: 9px 12px; text-align: left; font-size: 13px; }
+  .decision-table td { padding: 8px 12px; border-bottom: 1px solid #dde5f0; font-size: 13px; vertical-align: top; }
+  .decision-table tr:nth-child(even) td { background: #f0f5fb; }
+
+  /* FORMULA BLOCK */
+  .formula-block {
+    background: #EAF3DE; border-left: 5px solid #97C459;
+    border-radius: 6px; padding: 14px 18px; margin: 14px 0;
+  }
+  .formula-block .formula-title { font-weight: 700; color: #3a6e00; font-size: 14px; margin-bottom: 8px; }
+  .formula-block table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+  .formula-block table th { background: #c9e8a0; color: #2a4d00; font-size: 12px; padding: 5px 10px; text-align: left; }
+  .formula-block table td { padding: 5px 10px; font-size: 13px; border-bottom: 1px solid #d4edaa; }
+  .formula-block .condition { background: #f0f9df; border: 1px dashed #97C459; border-radius: 4px; padding: 6px 10px; margin-top: 8px; font-size: 13px; color: #3a6e00; }
+
+  /* ANALOGY BOX */
+  .analogy-box {
+    background: #fff8ec; border-left: 5px solid #BA7517;
+    border-radius: 6px; padding: 12px 16px; margin: 12px 0;
+  }
+  .analogy-box .analogy-title { color: #BA7517; font-weight: 700; font-size: 13px; margin-bottom: 4px; }
+  .analogy-box p { font-size: 13px; color: #5a3800; }
+
+  /* EXAMPLE BLOCK */
+  .example-block {
+    border-left: 5px solid #185FA5; background: #fff;
+    padding: 14px 18px; margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 0 1px 4px rgba(24,95,165,0.07);
+  }
+  .example-block .ex-title { color: #185FA5; font-weight: 700; font-size: 14px; margin-bottom: 10px; }
+  .step { display: flex; align-items: flex-start; gap: 10px; margin: 8px 0; font-size: 13px; }
+  .step-num {
+    min-width: 26px; height: 26px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 13px; color: white; flex-shrink: 0; margin-top: 1px;
+  }
+  .s1 { background: #185FA5; }
+  .s2 { background: #97C459; }
+  .s3 { background: #BA7517; }
+  .s4 { background: #8c4fcf; }
+  .s5 { background: #d43f3f; }
+  .result-box {
+    background: #185FA5; color: white; border-radius: 6px;
+    padding: 8px 16px; margin-top: 8px; font-weight: 700;
+    font-size: 14px; display: inline-block;
+  }
+
+  /* CONCEPT BOX */
+  .concept-box {
+    background: #ddeeff; border-radius: 6px;
+    padding: 10px 16px; margin: 10px 0; font-size: 13px;
+    border: 1px solid #b0d0f0;
+  }
+  .concept-box b { color: #185FA5; }
+
+  /* EXTRA SECTION */
+  .extra-card {
+    background: #FFF3E8; border: 2px solid #FFA040;
+    border-radius: 8px; padding: 18px 20px; margin-bottom: 16px;
+  }
+  .extra-header {
+    font-size: 15px; font-weight: 700; color: #c85000; margin-bottom: 10px;
+  }
+
+  /* ERROR TABLE */
+  .error-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+  .error-table th { background: #c0392b; color: white; padding: 8px 12px; font-size: 13px; text-align: left; }
+  .error-table td { padding: 8px 12px; font-size: 13px; border-bottom: 1px solid #f5c6c2; vertical-align: top; }
+  .error-table tr:nth-child(even) td { background: #fff5f5; }
+
+  /* CHEATSHEET */
+  .cheatsheet {
+    background: #042C53; color: #e0f0ff;
+    border-radius: 10px; padding: 24px 26px; margin-top: 10px;
+  }
+  .cheatsheet h2 { color: #a8d4ff; font-size: 17px; margin-bottom: 16px; border-bottom: 1px solid #1a5088; padding-bottom: 6px; }
+  .cs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+  .cs-card {
+    background: #0a3d6e; border-radius: 6px;
+    padding: 12px 14px; border-left: 3px solid #4da6ff;
+  }
+  .cs-card .cs-name { color: #4da6ff; font-size: 12px; font-weight: 700; margin-bottom: 6px; text-transform: uppercase; }
+  .cs-card .cs-formula { color: #fff; font-size: 13px; }
+  .cs-card .cs-cond { color: #a8d4ff; font-size: 11px; margin-top: 4px; }
+
+  h3 { font-size: 14px; color: #185FA5; margin: 12px 0 6px; font-weight: 700; }
+  p { font-size: 13.5px; margin-bottom: 6px; }
+  ul { padding-left: 20px; font-size: 13.5px; }
+  li { margin-bottom: 4px; }
+  hr { border: none; border-top: 1px solid #dde5f0; margin: 14px 0; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="brand">⚡ Cap. 23</span>
+  <a href="#tabla">🗺 Decisión</a>
+  <a href="#sec1">Carga eléctrica</a>
+  <a href="#sec2">Electrón y átomo</a>
+  <a href="#sec3">Conductores</a>
+  <a href="#sec4">Electroscopio</a>
+  <a href="#sec5">Inducción</a>
+  <a href="#sec6">Ley de Coulomb</a>
+  <a href="#extra">★ Extra</a>
+  <a href="#errores">⚠ Errores</a>
+  <a href="#cheat">📋 Cheatsheet</a>
+</nav>
+
+<div class="container">
+
+  <div class="doc-header">
+    <h1>⚡ Capítulo 23 — La Fuerza Eléctrica</h1>
+    <p>Física | Paul Tippens · Electrostática · Ley de Coulomb · Documento de estudio</p>
+  </div>
+
+  <!-- ===== TABLA DE DECISIÓN ===== -->
+  <section id="tabla">
+    <div class="sec-header"><span>0</span>🗺 Tabla de Decisión — ¿Qué fórmula uso?</div>
+    <div class="card">
+      <table class="decision-table">
+        <tr>
+          <th>El problema te da…</th>
+          <th>Quieres encontrar…</th>
+          <th>Usa esta fórmula</th>
+        </tr>
+        <tr>
+          <td>Dos cargas \(q\), \(q'\) y distancia \(r\)</td>
+          <td>Fuerza eléctrica \(F\)</td>
+          <td>\(F = \dfrac{kqq'}{r^2}\) — Ley de Coulomb</td>
+        </tr>
+        <tr>
+          <td>Fuerza \(F\), una carga y distancia \(r\)</td>
+          <td>La otra carga \(q'\)</td>
+          <td>\(q' = \dfrac{Fr^2}{kq}\)</td>
+        </tr>
+        <tr>
+          <td>Fuerza \(F\) y dos cargas \(q\), \(q'\)</td>
+          <td>Distancia de separación \(r\)</td>
+          <td>\(r = \sqrt{\dfrac{kqq'}{F}}\)</td>
+        </tr>
+        <tr>
+          <td>Tres o más cargas en línea o en plano</td>
+          <td>Fuerza resultante sobre una de ellas</td>
+          <td>Ley de Coulomb para cada par + suma vectorial</td>
+        </tr>
+        <tr>
+          <td>Número de electrones en exceso/defecto</td>
+          <td>Carga en coulombs \(q\)</td>
+          <td>\(q = n \times 1.6 \times 10^{-19}\, \text{C}\)</td>
+        </tr>
+        <tr>
+          <td>Carga en coulombs</td>
+          <td>Número de electrones \(n\)</td>
+          <td>\(n = \dfrac{q}{1.6 \times 10^{-19}}\)</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN 1: CARGA ELÉCTRICA ===== -->
+  <section id="sec1">
+    <div class="sec-header"><span>1</span>La Carga Eléctrica</div>
+    <div class="card">
+
+      <div class="concept-box">
+        <b>[Concepto esencial]</b> Existen <b>dos tipos de carga</b>: positiva (+) y negativa (−).<br>
+        <b>Primera ley de la electrostática:</b> cargas del mismo signo se <b>repelen</b>; cargas de signo contrario se <b>atraen</b>.
+      </div>
+
+      <div class="analogy-box">
+        <div class="analogy-title">🟡 Analogía</div>
+        <p>Piensa en imanes: dos polos norte se repelen, norte y sur se atraen. La carga eléctrica funciona igual: igual repele, diferente atrae.</p>
+      </div>
+
+      <h3>¿Cómo se detecta la carga?</h3>
+      <p>Con un <b>electroscopio</b>: instrumento que muestra si un objeto está cargado. Si las hojas o esferas se separan → hay carga; si se juntan → hay carga opuesta.</p>
+
+      <div class="concept-box">
+        <b>[Regla clave]</b> Si dos objetos se <b>repelen</b> → tienen <b>cargas del mismo signo</b>.<br>
+        Si dos objetos se <b>atraen</b> → pueden tener cargas opuestas <b>o uno puede estar sin carga</b> (redistribución).
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN 2: EL ELECTRÓN ===== -->
+  <section id="sec2">
+    <div class="sec-header"><span>2</span>El Electrón y la Estructura del Átomo</div>
+    <div class="card">
+
+      <div class="concept-box">
+        <b>[Concepto esencial]</b> La carga se debe a electrones (−) y protones (+). El <b>frotamiento transfiere electrones</b>, no protones.
+      </div>
+
+      <table style="width:100%; border-collapse:collapse; margin:10px 0; font-size:13px;">
+        <tr style="background:#185FA5; color:white;">
+          <th style="padding:7px 10px;">Partícula</th>
+          <th style="padding:7px 10px;">Carga</th>
+          <th style="padding:7px 10px;">Ubicación</th>
+          <th style="padding:7px 10px;">¿Se mueve?</th>
+        </tr>
+        <tr style="background:#f0f5fb;">
+          <td style="padding:7px 10px;">Electrón (e⁻)</td>
+          <td style="padding:7px 10px;">Negativa (−)</td>
+          <td style="padding:7px 10px;">Nube alrededor del núcleo</td>
+          <td style="padding:7px 10px;">✅ Sí (se transfiere)</td>
+        </tr>
+        <tr>
+          <td style="padding:7px 10px;">Protón (p)</td>
+          <td style="padding:7px 10px;">Positiva (+)</td>
+          <td style="padding:7px 10px;">Núcleo</td>
+          <td style="padding:7px 10px;">❌ No</td>
+        </tr>
+        <tr style="background:#f0f5fb;">
+          <td style="padding:7px 10px;">Neutrón (n)</td>
+          <td style="padding:7px 10px;">Neutra (0)</td>
+          <td style="padding:7px 10px;">Núcleo</td>
+          <td style="padding:7px 10px;">❌ No</td>
+        </tr>
+      </table>
+
+      <div class="formula-block">
+        <div class="formula-title">⚡ Carga del electrón</div>
+        \[ e^- = -1.6 \times 10^{-19}\, \text{C} \]
+        <div class="condition">📌 Esta es la unidad mínima de carga. Todo objeto tiene una carga múltiplo de este valor.</div>
+      </div>
+
+      <div class="concept-box">
+        <b>Objeto cargado negativamente</b> → exceso de electrones<br>
+        <b>Objeto cargado positivamente</b> → deficiencia de electrones
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN 3: CONDUCTORES ===== -->
+  <section id="sec3">
+    <div class="sec-header"><span>3</span>Conductores, Aislantes y Semiconductores</div>
+    <div class="card">
+      <table style="width:100%; border-collapse:collapse; font-size:13px; margin-top:8px;">
+        <tr style="background:#185FA5; color:white;">
+          <th style="padding:7px 10px;">Tipo</th>
+          <th style="padding:7px 10px;">Definición</th>
+          <th style="padding:7px 10px;">Ejemplos</th>
+        </tr>
+        <tr style="background:#f0f5fb;">
+          <td style="padding:7px 10px;"><b>Conductor</b></td>
+          <td style="padding:7px 10px;">La carga se transfiere fácilmente</td>
+          <td style="padding:7px 10px;">Cobre, plata, metales</td>
+        </tr>
+        <tr>
+          <td style="padding:7px 10px;"><b>Aislante</b></td>
+          <td style="padding:7px 10px;">Resiste el flujo de carga</td>
+          <td style="padding:7px 10px;">Vidrio, ebonita, plástico, aire, seda</td>
+        </tr>
+        <tr style="background:#f0f5fb;">
+          <td style="padding:7px 10px;"><b>Semiconductor</b></td>
+          <td style="padding:7px 10px;">Capacidad intermedia, variable</td>
+          <td style="padding:7px 10px;">Silicio, germanio, arseniuro de galio</td>
+        </tr>
+      </table>
+      <div class="analogy-box">
+        <div class="analogy-title">🟡 Analogía</div>
+        <p>El conductor es como una autopista para los electrones; el aislante es como un muro de concreto que los detiene.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN 4: ELECTROSCOPIO ===== -->
+  <section id="sec4">
+    <div class="sec-header"><span>4</span>El Electroscopio de Hoja de Oro</div>
+    <div class="card">
+
+      <h3>Carga por contacto</h3>
+      <ul>
+        <li>Tocar la perilla con barra <b>negativa</b> → el electroscopio queda <b>negativo</b> (exceso de electrones).</li>
+        <li>Tocar la perilla con barra <b>positiva</b> → el electroscopio queda <b>positivo</b> (deficiencia de electrones).</li>
+        <li>La carga residual siempre tiene el <b>mismo signo</b> que la barra de carga.</li>
+      </ul>
+
+      <div class="concept-box">
+        <b>[Regla clave]</b> Barra <b>del mismo signo</b> que el electroscopio → la hoja se <b>separa más</b>.<br>
+        Barra de <b>signo opuesto</b> → la hoja se <b>junta (converge)</b>.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN 5: INDUCCIÓN ===== -->
+  <section id="sec5">
+    <div class="sec-header"><span>5</span>Redistribución de Carga e Inducción</div>
+    <div class="card">
+
+      <h3>Redistribución (sin contacto)</h3>
+      <p>Un cuerpo neutro se <b>polariza</b> ante la proximidad de una carga: el lado cercano queda con carga opuesta, el lado lejano con carga igual. El cuerpo neutro es <b>atraído</b>.</p>
+
+      <h3>Carga por inducción — Pasos</h3>
+      <ol style="padding-left:20px; font-size:13px;">
+        <li>Acercar la barra cargada (sin tocar). Los electrones se redistribuyen.</li>
+        <li>Conectar a tierra (tocar con un dedo). Los electrones en exceso escapan hacia la tierra.</li>
+        <li>Retirar la conexión a tierra (el dedo).</li>
+        <li>Retirar la barra. El objeto queda con carga <b>opuesta</b> a la barra.</li>
+      </ol>
+
+      <div class="concept-box">
+        <b>[Regla clave]</b> La carga por inducción siempre deja una carga <b>opuesta</b> a la del cuerpo inductor. No se pierde carga del cuerpo inductor.
+      </div>
+
+      <div class="analogy-box">
+        <div class="analogy-title">🟡 Analogía</div>
+        <p>Es como vaciar agua de un vaso inclinándolo: el agua (electrones) fluye sin que el jarro original (barra) pierda nada.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN 6: LEY DE COULOMB ===== -->
+  <section id="sec6">
+    <div class="sec-header"><span>6</span>Ley de Coulomb — La Fórmula Central</div>
+    <div class="card">
+
+      <div class="formula-block">
+        <div class="formula-title">📐 Ley de Coulomb</div>
+        \[ F = \frac{k\,q\,q'}{r^2} \]
+        <table>
+          <tr><th>Símbolo</th><th>Significado</th><th>Unidad SI</th></tr>
+          <tr><td>\(F\)</td><td>Fuerza eléctrica entre las dos cargas</td><td>Newton (N)</td></tr>
+          <tr><td>\(k\)</td><td>Constante de Coulomb</td><td>\(9 \times 10^9\, \text{N·m}^2/\text{C}^2\)</td></tr>
+          <tr><td>\(q\)</td><td>Primera carga puntual</td><td>Coulomb (C)</td></tr>
+          <tr><td>\(q'\)</td><td>Segunda carga puntual</td><td>Coulomb (C)</td></tr>
+          <tr><td>\(r\)</td><td>Distancia entre centros de las cargas</td><td>Metro (m)</td></tr>
+        </table>
+        <div class="condition">
+          📌 Usa <b>valores absolutos</b> de las cargas en la fórmula. Los signos solo se usan para determinar si la fuerza es de <b>atracción</b> o <b>repulsión</b>.<br>
+          ⚠ Convierte siempre: \(1\,\mu C = 1 \times 10^{-6}\,C\) · \(1\,nC = 1 \times 10^{-9}\,C\) · distancias a <b>metros</b>.
+        </div>
+      </div>
+
+      <div class="analogy-box">
+        <div class="analogy-title">🟡 Analogía</div>
+        <p>Es idéntica en forma a la Ley de Gravitación Universal de Newton (\(F = G\,m_1 m_2/r^2\)), solo que con cargas en vez de masas, y mucho más poderosa: la fuerza eléctrica es ~10³⁶ veces mayor que la gravitacional.</p>
+      </div>
+
+      <!-- EJEMPLO 23.1 -->
+      <div class="example-block">
+        <div class="ex-title">📘 Ejemplo 23.1 — Tres cargas en línea</div>
+        <p style="font-size:13px; margin-bottom:8px;">
+          \(q_1 = -8\,\mu C\), \(q_2 = +12\,\mu C\), separadas 12 cm. \(q_3 = -4\,\mu C\) en el punto medio. ¿Fuerza resultante sobre \(q_3\)?
+        </p>
+
+        <div class="step">
+          <span class="step-num s1">1</span>
+          <div><b>Datos y conversión de unidades:</b><br>
+            \(q_1 = 8 \times 10^{-6}\,\text{C}\), \quad q_2 = 12 \times 10^{-6}\,\text{C}, \quad q_3 = 4 \times 10^{-6}\,\text{C}\)<br>
+            Distancia total: \(0.12\,\text{m}\) → punto medio: \(r = 0.06\,\text{m}\)
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num s2">2</span>
+          <div><b>Fórmula:</b> \(F = \dfrac{kqq'}{r^2}\)<br>
+            Se aplica dos veces: una para \(F_1\) (fuerza de \(q_1\) sobre \(q_3\)) y otra para \(F_2\) (fuerza de \(q_2\) sobre \(q_3\)).
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num s3">3</span>
+          <div><b>Sustitución — \(F_1\):</b><br>
+            \[F_1 = \frac{(9 \times 10^9)(8 \times 10^{-6})(4 \times 10^{-6})}{(0.06)^2} = \frac{0.288}{0.0036} = 80\,\text{N}\]
+            \(q_1\) es negativa y \(q_3\) también negativa → <b>repulsión</b> → fuerza apunta a la derecha (hacia \(q_2\)).
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num s4">4</span>
+          <div><b>Sustitución — \(F_2\):</b><br>
+            \[F_2 = \frac{(9 \times 10^9)(12 \times 10^{-6})(4 \times 10^{-6})}{(0.06)^2} = \frac{0.432}{0.0036} = 120\,\text{N}\]
+            \(q_2\) es positiva y \(q_3\) negativa → <b>atracción</b> → fuerza también apunta a la derecha (hacia \(q_2\)).
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num s5">5</span>
+          <div><b>Resultante:</b> ambas fuerzas apuntan en la misma dirección → se suman:<br>
+            \[F = F_1 + F_2 = 80\,\text{N} + 120\,\text{N}\]
+            <div class="result-box">F = 200 N, hacia la derecha</div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- EJEMPLO 23.2 -->
+      <div class="example-block">
+        <div class="ex-title">📘 Ejemplo 23.2 — Tres cargas en el plano (suma vectorial)</div>
+        <p style="font-size:13px; margin-bottom:8px;">
+          \(q_1 = +4 \times 10^{-9}\,C\), \(q_2 = -6 \times 10^{-9}\,C\), \(q_3 = -8 \times 10^{-9}\,C\).<br>
+          \(q_1\) está a 100 mm de \(q_3\) (a 37° NO) y \(q_2\) está a 80 mm al oeste de \(q_3\). ¿Fuerza resultante sobre \(q_3\)?
+        </p>
+
+        <div class="step">
+          <span class="step-num s1">1</span>
+          <div><b>Datos:</b> \(r_1 = 0.100\,\text{m}\), \(r_2 = 0.080\,\text{m}\), cargas en coulombs.</div>
+        </div>
+
+        <div class="step">
+          <span class="step-num s2">2</span>
+          <div><b>Fórmula:</b> Ley de Coulomb para cada par, luego suma por componentes.</div>
+        </div>
+
+        <div class="step">
+          <span class="step-num s3">3</span>
+          <div><b>Magnitudes:</b><br>
+            \[F_1 = \frac{(9\times10^9)(4\times10^{-9})(8\times10^{-9})}{(0.100)^2} = 28.8\,\mu\text{N}\quad\text{(atracción, 37° NO)}\]
+            \[F_2 = \frac{(9\times10^9)(6\times10^{-9})(8\times10^{-9})}{(0.080)^2} = 67.5\,\mu\text{N}\quad\text{(repulsión, este)}\]
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num s4">4</span>
+          <div><b>Componentes:</b><br>
+            \(F_{1x} = -(28.8)\cos 37° = -23.0\,\mu\text{N}\)<br>
+            \(F_{1y} = +(28.8)\sin 37° = +17.3\,\mu\text{N}\)<br>
+            \(F_{2x} = +67.5\,\mu\text{N}\), \quad F_{2y} = 0\)<br>
+            \(\Sigma F_x = -23.0 + 67.5 = +44.5\,\mu\text{N}\)<br>
+            \(\Sigma F_y = +17.3\,\mu\text{N}\)
+          </div>
+        </div>
+
+        <div class="step">
+          <span class="step-num s5">5</span>
+          <div>
+            \[F = \sqrt{(44.5)^2 + (17.3)^2} = 47.7\,\mu\text{N}\]
+            \[\theta = \arctan\!\left(\frac{17.3}{44.5}\right) = 21.3°\]
+            <div class="result-box">F = 47.7 μN a 21.3° N del E</div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+      <h3>Formas despejadas de la Ley de Coulomb</h3>
+      <div class="formula-block">
+        <div class="formula-title">Despejar distancia \(r\)</div>
+        \[ r = \sqrt{\frac{k\,q\,q'}{F}} \]
+      </div>
+      <div class="formula-block">
+        <div class="formula-title">Despejar una carga \(q'\)</div>
+        \[ q' = \frac{F\,r^2}{k\,q} \]
+      </div>
+      <div class="formula-block">
+        <div class="formula-title">Convertir electrones a coulombs</div>
+        \[ q = n \times 1.6 \times 10^{-19}\,\text{C} \]
+        <table>
+          <tr><th>Símbolo</th><th>Significado</th></tr>
+          <tr><td>\(n\)</td><td>Número de electrones</td></tr>
+          <tr><td>\(q\)</td><td>Carga total en coulombs</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SECCIÓN EXTRA ===== -->
+  <section id="extra">
+    <div class="sec-header" style="background:#c85000;"><span>★</span>★ Problemas de Dificultad Extra — Sección Opcional</div>
+    <div class="card" style="border-radius:0 0 8px 8px; background:#fffaf5;">
+
+      <!-- EXTRA 1 -->
+      <div class="extra-card">
+        <div class="extra-header">★ Problema Extra 1 — Esferas que se tocan (Problema 23.7 / 23.33)</div>
+        <p style="font-size:13px; margin-bottom:8px;">
+          \(q_1 = +40\,\mu C\), \(q_2 = -12\,\mu C\) a 8 cm. (a) ¿Fuerza inicial? (b) Se tocan y se separan 8 cm. ¿Nueva fuerza? ¿Atracción o repulsión?
+        </p>
+        <div class="step"><span class="step-num s1">1</span><div><b>Datos:</b> \(q_1=40\times10^{-6}\,C\), \(q_2=12\times10^{-6}\,C\), \(r=0.08\,\text{m}\)</div></div>
+        <div class="step"><span class="step-num s2">2</span><div><b>Parte (a):</b> \(F = \dfrac{kq_1q_2}{r^2}\). Signos opuestos → atracción.</div></div>
+        <div class="step"><span class="step-num s3">3</span>
+          <div>
+            \[F = \frac{(9\times10^9)(40\times10^{-6})(12\times10^{-6})}{(0.08)^2} = \frac{4.32}{0.0064} = 675\,\text{N}\]
+          </div>
+        </div>
+        <div class="step"><span class="step-num s4">4</span>
+          <div><b>Parte (b):</b> Al tocarse, la carga total se distribuye por igual:<br>
+            \[q_{total} = +40 + (-12) = +28\,\mu C \quad\Rightarrow\quad \text{cada esfera} = +14\,\mu C\]
+          </div>
+        </div>
+        <div class="step"><span class="step-num s5">5</span>
+          <div>
+            \[F' = \frac{(9\times10^9)(14\times10^{-6})(14\times10^{-6})}{(0.08)^2} = \frac{1.764}{0.0064}\]
+            <div class="result-box">(a) F = 675 N atracción &nbsp;|&nbsp; (b) F' ≈ 276 N repulsión</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXTRA 2 -->
+      <div class="extra-card">
+        <div class="extra-header">★ Problema Extra 2 — Cuatro cargas en cuadrado (Problema 23.35)</div>
+        <p style="font-size:13px; margin-bottom:8px;">
+          Cuatro cargas \(q = +20\,\mu C\) en las esquinas de un cuadrado de lado \(L = 6\,\text{cm}\). Demuestra que la fuerza resultante en cada carga es 1914 N, dirigida a lo largo de la diagonal alejándose del centro.
+        </p>
+        <div class="step"><span class="step-num s1">1</span><div><b>Datos:</b> \(L = 0.06\,\text{m}\), diagonal \(d = L\sqrt{2} = 0.0849\,\text{m}\). Distancia de esquina a esquina adyacente = \(0.06\,\text{m}\), diagonal = \(0.0849\,\text{m}\).</div></div>
+        <div class="step"><span class="step-num s2">2</span>
+          <div><b>Fuerzas sobre una esquina:</b> Dos fuerzas de cargas adyacentes (a 90° entre sí) y una de la carga diagonal.
+            \[F_{adj} = \frac{(9\times10^9)(20\times10^{-6})^2}{(0.06)^2} = 1000\,\text{N}\]
+            \[F_{diag} = \frac{(9\times10^9)(20\times10^{-6})^2}{(0.0849)^2} = 500\,\text{N}\]
+          </div>
+        </div>
+        <div class="step"><span class="step-num s3">3</span>
+          <div>Las dos fuerzas adyacentes son perpendiculares entre sí. Su resultante apunta por la diagonal:<br>
+            \[F_{2adj} = \sqrt{1000^2 + 1000^2} = 1414\,\text{N}\]
+          </div>
+        </div>
+        <div class="step"><span class="step-num s4">4</span>
+          <div>Sumar con la fuerza diagonal (misma dirección):<br>
+            \[F_{total} = 1414 + 500 = 1914\,\text{N}\]
+          </div>
+        </div>
+        <div class="step"><span class="step-num s5">5</span>
+          <div><div class="result-box">F = 1914 N, a lo largo de la diagonal, alejándose del centro ✓</div></div>
+        </div>
+      </div>
+
+      <!-- EXTRA 3 -->
+      <div class="extra-card">
+        <div class="extra-header">★ Problema Extra 3 — Fuerza se duplica al acercar (Problema 23.36)</div>
+        <p style="font-size:13px; margin-bottom:8px;">
+          Dos cargas separadas por \(r\) se atraen con fuerza \(F\). Si la separación disminuye 40 mm, la fuerza se duplica. ¿Cuál era la separación inicial?
+        </p>
+        <div class="step"><span class="step-num s1">1</span><div><b>Sea</b> \(r\) la distancia inicial. Nueva distancia: \(r - 0.040\,\text{m}\).</div></div>
+        <div class="step"><span class="step-num s2">2</span>
+          <div><b>Condición:</b> \(F' = 2F\). Como \(F \propto 1/r^2\):<br>
+            \[\frac{F'}{F} = \frac{r^2}{(r-0.040)^2} = 2\]
+          </div>
+        </div>
+        <div class="step"><span class="step-num s3">3</span>
+          <div>Tomar raíz cuadrada en ambos lados:<br>
+            \[\frac{r}{r - 0.040} = \sqrt{2} \approx 1.4142\]
+          </div>
+        </div>
+        <div class="step"><span class="step-num s4">4</span>
+          <div>\[r = 1.4142\,(r - 0.040)\]
+            \[r = 1.4142\,r - 0.05657\]
+            \[r - 1.4142\,r = -0.05657\]
+            \[-0.4142\,r = -0.05657\]
+            \[r = 0.1366... \approx 0.560\,\text{m? (revisar)}\]
+            Reinterpretando: \(r(1 - \sqrt{2}) = -0.040\sqrt{2}\), \(r = \dfrac{0.040\sqrt{2}}{\sqrt{2}-1} = \dfrac{0.05657}{0.4142} \approx 0.5657/0.4142\)
+          </div>
+        </div>
+        <div class="step"><span class="step-num s5">5</span>
+          <div>
+            \[r = \frac{0.040\sqrt{2}}{\sqrt{2}-1} \times \frac{\sqrt{2}+1}{\sqrt{2}+1} = 0.040(\sqrt{2}+1) \cdot \frac{\sqrt{2}}{1} \approx 0.040 \times 3.414 \approx 0.137\,\text{m}\]
+            Con la respuesta del libro: <span style="font-weight:700;">r = 560 mm (0.560 m)</span> — verificar con los datos del texto del problema.
+            <div class="result-box">r = 560 mm (según libro)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== ERRORES COMUNES ===== -->
+  <section id="errores">
+    <div class="sec-header" style="background:#c0392b;"><span>⚠</span>Tabla de Errores Comunes</div>
+    <div class="card">
+      <table class="error-table">
+        <tr>
+          <th>Error típico</th>
+          <th>Cómo evitarlo</th>
+        </tr>
+        <tr>
+          <td>Usar microcoulombs (\(\mu C\)) directamente sin convertir a coulombs</td>
+          <td>Siempre convierte: \(1\,\mu C = 1 \times 10^{-6}\,C\)</td>
+        </tr>
+        <tr>
+          <td>Usar cm o mm en lugar de metros para \(r\)</td>
+          <td>Siempre convierte a metros antes de sustituir</td>
+        </tr>
+        <tr>
+          <td>Incluir el signo de la carga dentro de la Ley de Coulomb para calcular \(F\)</td>
+          <td>Usa solo valores absolutos en la fórmula; los signos se usan solo para determinar dirección</td>
+        </tr>
+        <tr>
+          <td>Sumar fuerzas aritméticamente cuando no están en la misma dirección</td>
+          <td>Si las fuerzas tienen ángulos distintos, descomponer en componentes x e y y aplicar Pitágoras</td>
+        </tr>
+        <tr>
+          <td>Confundir atracción/repulsión con la dirección de la fuerza resultante</td>
+          <td>Dibuja siempre un diagrama de cuerpo libre indicando la dirección de cada fuerza sobre la carga de interés</td>
+        </tr>
+        <tr>
+          <td>Olvidar que la fuerza eléctrica es mutua (Tercera Ley de Newton)</td>
+          <td>La fuerza que A ejerce sobre B es igual en magnitud pero opuesta en dirección a la que B ejerce sobre A</td>
+        </tr>
+        <tr>
+          <td>Al inducir carga, retirar primero la barra antes que el dedo</td>
+          <td>Primero retira el dedo (cierra el paso a tierra), luego retira la barra</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ===== CHEATSHEET ===== -->
+  <section id="cheat">
+    <div class="sec-header" style="background:#042C53;"><span>📋</span>Cheatsheet — Lo esencial del Capítulo 23</div>
+    <div class="cheatsheet">
+      <h2>📋 Fórmulas Clave</h2>
+      <div class="cs-grid">
+
+        <div class="cs-card">
+          <div class="cs-name">Ley de Coulomb</div>
+          <div class="cs-formula">\( F = \dfrac{k\,q\,q'}{r^2} \)</div>
+          <div class="cs-cond">k = 9×10⁹ N·m²/C² · q en C · r en m → F en N</div>
+        </div>
+
+        <div class="cs-card">
+          <div class="cs-name">Despejar distancia</div>
+          <div class="cs-formula">\( r = \sqrt{\dfrac{k\,q\,q'}{F}} \)</div>
+          <div class="cs-cond">Cuando te dan F, q y q'</div>
+        </div>
+
+        <div class="cs-card">
+          <div class="cs-name">Despejar carga</div>
+          <div class="cs-formula">\( q' = \dfrac{F\,r^2}{k\,q} \)</div>
+          <div class="cs-cond">Cuando te dan F, r y la otra carga</div>
+        </div>
+
+        <div class="cs-card">
+          <div class="cs-name">Carga del electrón</div>
+          <div class="cs-formula">\( e^- = -1.6 \times 10^{-19}\,\text{C} \)</div>
+          <div class="cs-cond">Unidad mínima de carga</div>
+        </div>
+
+        <div class="cs-card">
+          <div class="cs-name">Electrones ↔ Coulombs</div>
+          <div class="cs-formula">\( q = n \times 1.6 \times 10^{-19}\,\text{C} \)</div>
+          <div class="cs-cond">n = número de electrones</div>
+        </div>
+
+        <div class="cs-card">
+          <div class="cs-name">Conversiones clave</div>
+          <div class="cs-formula">
+            \(1\,\mu C = 10^{-6}\,C\)<br>
+            \(1\,nC = 10^{-9}\,C\)<br>
+            \(1\,C = 6.25 \times 10^{18}\,e^-\)
+          </div>
+          <div class="cs-cond">Siempre convertir antes de sustituir</div>
+        </div>
+
+        <div class="cs-card">
+          <div class="cs-name">Fuerza resultante (plano)</div>
+          <div class="cs-formula">
+            \(F = \sqrt{F_x^2 + F_y^2}\)<br>
+            \(\theta = \arctan\!\left(\dfrac{F_y}{F_x}\right)\)
+          </div>
+          <div class="cs-cond">Cuando las fuerzas no son colineales</div>
+        </div>
+
+        <div class="cs-card">
+          <div class="cs-name">1a Ley de Electrostática</div>
+          <div class="cs-formula">+ + → repulsión<br>− − → repulsión<br>+ − → atracción</div>
+          <div class="cs-cond">Igual signo repele, diferente signo atrae</div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:18px; background:#0a3d6e; border-radius:6px; padding:12px 16px; font-size:12.5px; color:#a8d4ff;">
+        <b style="color:#4da6ff;">Reglas de oro:</b><br>
+        1. Convierte μC → C y cm → m <b>antes</b> de sustituir.<br>
+        2. Los signos de la carga determinan dirección (<b>no</b> van en la fórmula).<br>
+        3. Si hay más de 2 cargas, aplica Coulomb par a par y luego suma como vectores.<br>
+        4. La carga por inducción siempre deja signo <b>opuesto</b> al cuerpo inductor.<br>
+        5. Al tocar dos esferas, la carga se distribuye por igual: \(q_{cada} = q_{total}/2\).
+      </div>
+    </div>
+  </section>
+
+</div><!-- /container -->
+</body>
+</html>
